@@ -1,6 +1,9 @@
 import openai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "your-secret-api-key"
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY", "your-secret-api-key")
 
 def get_response_from_gpt(prompt):
     response = openai.ChatCompletion.create(

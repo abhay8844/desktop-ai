@@ -1,6 +1,10 @@
 import wolframalpha
 import pyttsx3
 import speech_recognition
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -12,7 +16,10 @@ def speak(audio):
     engine.runAndWait()
 
 def WolfRamAlpha(query):
-    apikey = "5GPJH3-6LGX7HT97T"
+    apikey = os.getenv("WOLFRAMALPHA_API_KEY")
+    if not apikey:
+        speak("Wolfram Alpha API key is missing. Please check your dot env file.")
+        return
 
     requester = wolframalpha.Client(apikey)
     requested = requester.query(query)
