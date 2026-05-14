@@ -26,24 +26,22 @@ First, clone this repository or download the source code.
 Then, install the necessary Python dependencies using `pip`:
 
 ```bash
-pip install pyttsx3 SpeechRecognition wikipedia requests beautifulsoup4 plyer pyautogui speedtest-cli pywhatkit wolframalpha googletrans==4.0.0-rc1 gTTS playsound pynput opencv-python openai numpy
+pip install -r requirements.txt
 ```
 
 *Note: Some libraries, like `pyaudio` (required by `SpeechRecognition`), might require additional system dependencies depending on your OS.*
 
 ## Configuration / API Keys
 
-Several features in Zira rely on external APIs. You **must** provide your own API keys for these functionalities to work.
+Several features in Zira rely on external APIs. You **must** provide your own API keys for these functionalities to work. We use environment variables for security.
 
-1. **WolframAlpha API Key**:
-   - Get a free API key from [WolframAlpha Developer Portal](https://developer.wolframalpha.com/).
-   - Update `Calculatenumbers.py` to include your key:
-     ```python
-     apikey = "YOUR_WOLFRAMALPHA_API_KEY"
-     ```
-2. **OpenAI API Key (Optional / Advanced)**:
-   - Some auxiliary scripts (`Openaitest.py`, `open.py`, `Nvidiaopenai.py`, `abhay.py`) are structured to interface with OpenAI or NVIDIA APIs.
-   - If you plan to use these, update the `apikey1` variable or the `openai.api_key` in the respective scripts with your actual API credentials.
+1. Copy the provided `.env.example` file and rename it to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Open the `.env` file and insert your actual API keys:
+   - **WolframAlpha API Key**: Get a free API key from [WolframAlpha Developer Portal](https://developer.wolframalpha.com/).
+   - **OpenAI / NVIDIA API Keys (Optional)**: If you plan to use the advanced AI models.
 
 ## Usage
 

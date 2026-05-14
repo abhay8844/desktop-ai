@@ -1,8 +1,9 @@
 import os
 import openai
-from abhay import apikey1
+from dotenv import load_dotenv
 
-openai.api_key = apikey1
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY", "")
 
 response = openai.Completion.create(
  model="text-davinci-003",

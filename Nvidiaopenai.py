@@ -1,8 +1,12 @@
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = OpenAI(
   base_url = "https://integrate.api.nvidia.com/v1",
-  api_key = "use your own api-key"
+  api_key = os.getenv("NVIDIA_API_KEY", "use your own api-key")
 )
 
 completion = client.chat.completions.create(
@@ -17,4 +21,3 @@ completion = client.chat.completions.create(
 for chunk in completion:
   if chunk.choices[0].delta.content is not None:
     print(chunk.choices[0].delta.content, end="")
-
